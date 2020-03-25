@@ -1,4 +1,4 @@
-package com.cinema;
+package com.cinema.controllers;
 
 import java.io.Serializable;
 
