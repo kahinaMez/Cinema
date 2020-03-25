@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="276.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.HomeController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="-3.0" layoutY="-4.0" prefHeight="45.0" prefWidth="270.0" text="Formulaire">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="76.0" layoutY="104.0" text="cliquez ici" />
+   </children>
+</AnchorPane>
