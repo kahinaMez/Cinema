@@ -12,7 +12,7 @@ public abstract class CinemaDAO<T> {
 	private static final String bdd = "cinema";
 	private static final String host = "localhost";
 	
-	private static final String url = "jdbc:mysql://"+host+":"+port+"/"+bdd;
+	private static final String url = "jdbc:mysql://"+host+":"+port+"/"+bdd+"?serverTimezone=UTC";
 	private static final String utilisateur = "root";
 	private static final String motDePasse = "";
 	
@@ -21,29 +21,18 @@ public abstract class CinemaDAO<T> {
 	static {
 		/* Chargement du driver JDBC pour MySQL */
 		try {
-		    Class.forName( "com.mysql.jdbc.Driver" );
+		    Class.forName( "com.mysql.cj.jdbc.Driver" );
+		    cn = DriverManager.getConnection( url, utilisateur, motDePasse );
 		} catch ( ClassNotFoundException e ) {
 		    /* Gérer les éventuelles erreurs ici. */
+			e.printStackTrace();
 		}
-		try {
-		    cn = DriverManager.getConnection( url, utilisateur, motDePasse );
-
-		    /* Ici, nous placerons nos requêtes vers la BDD */
-		    /* ... */
-
-		} catch ( SQLException e ) {
+		catch ( SQLException e ) {
 		    /* Gérer les éventuelles erreurs ici */
-		} finally {
-		    if ( cn != null )
-		        try {
-		            /* Fermeture de la connexion */
-		            cn.close();
-		        } catch ( SQLException ignore ) {
-		            /* Si une erreur survient lors de la fermeture, il suffit de l'ignorer. */
-		        }
-		}
+			e.printStackTrace();
+		} 
+		
 	}
-	
 	
 	abstract public List<T> findAll();
 	abstract public T findById(int id);

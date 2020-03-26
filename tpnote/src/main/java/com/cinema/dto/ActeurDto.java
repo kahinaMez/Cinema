@@ -1,16 +1,15 @@
 package com.cinema.dto;
 
-import java.sql.Date;
-
 public class ActeurDto {
+
 	private int id;
 	private String nom;
 	private String prenom;
-	private Date date_naissance;
+	private String date_naissance;
 	
 	public ActeurDto() {};
 	
-	public ActeurDto(int id, String nom, String prenom, Date date_naissance) {
+	public ActeurDto(int id, String nom, String prenom, String date_naissance) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -42,13 +41,17 @@ public class ActeurDto {
 		this.prenom = prenom;
 	}
 
-	public Date getDate_naissance() {
+	public String getDate_naissance() {
 		return date_naissance;
 	}
 
-	public void setDate_naissance(Date date_naissance) {
+	public void setDate_naissance(String date_naissance) {
 		this.date_naissance = date_naissance;
 	} 
 	
-
+	@Override
+	public String toString() {
+		return "ActeurDto [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", date_naissance=" + date_naissance
+				+ "]";
+	}
 }
