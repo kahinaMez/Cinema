@@ -44,25 +44,110 @@ public class ActeurDAO extends CinemaDAO<ActeurDto>{
 
 	@Override
 	public ActeurDto findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		ActeurDto acteur=new ActeurDto();
+		try {
+			PreparedStatement st =CinemaDAO.cn.prepareStatement("Select id,nom,prenom,dateN from acteur where id=?");
+			st.setInt(1, id);
+			ResultSet result = st.executeQuery();
+			
+			//Parcrous du résultat
+			result.next();
+			String nom = result.getString(2);
+			String prenom = result.getString(3);
+			String dateNaissance = result.getString(4);
+				
+			//Création d'un acteur
+			acteur.setId(id);
+			acteur.setNom(nom);
+			acteur.setPrenom(prenom);
+			acteur.setDate_naissance(dateNaissance);
+				
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return acteur;
 	}
 
 	@Override
 	public boolean save(ActeurDto obj) {
-		// TODO Auto-generated method stub
+		try {
+			PreparedStatement st;
+			if (obj.getId()==-1) {
+				st =CinemaDAO.cn.prepareStatement("insert into acteur (nom,prenom,dateN) values (?,?,?)");
+			}
+			else {
+				st =CinemaDAO.cn.prepareStatement("insert into acteur (nom,prenom,dateN,id) values (?,?,?,?)");
+				st.setInt(4, obj.getId());
+			}
+			st.setString(1, obj.getNom());
+			st.setString(2, obj.getPrenom());
+			st.setString(3, obj.getDate_naissance());
+			if(st.executeUpdate()==1) 
+				return true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
+		try {
+			PreparedStatement st =CinemaDAO.cn.prepareStatement("delete from acteur where id=?");
+			st.setInt(1, id);
+			if(st.executeUpdate()==1) 
+				return true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 		return false;
 	}
 
 	@Override
-	public boolean update(ActeurDto obj) {
-		// TODO Auto-generated method stub
+	public boolean update(int id,ActeurDto obj) {
+		try {
+			PreparedStatement st =CinemaDAO.cn.prepareStatement("update acteur set id=?,nom=?,prenom=?,dateN=? where id=?");
+			ActeurDto act= this.findById(id);
+			
+			if(obj.getId()==-1)
+				st.setInt(1, act.getId());
+			else
+				st.setInt(1, obj.getId());
+			
+			
+			if(obj.getNom()==null)
+				st.setString(2, act.getNom());
+			else 
+				st.setString(2, obj.getNom());
+			
+			
+			if(obj.getPrenom()==null)
+				st.setString(3, act.getPrenom());
+			else 
+				st.setString(3, obj.getPrenom());
+			
+			
+			if(obj.getDate_naissance()==null)
+				st.setString(4, act.getDate_naissance());
+			else 
+				st.setString(4, obj.getDate_naissance());
+			
+			st.setInt(5, id);
+			
+			if(st.executeUpdate()==1) 
+				return true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 

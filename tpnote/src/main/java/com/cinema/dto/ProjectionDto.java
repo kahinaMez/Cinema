@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class ProjectionDto {
 	private int id;
-	private Date date;
+	private String date;
 	private int nb_place_libre;
 	private float tarif;
 	
@@ -12,7 +12,7 @@ public class ProjectionDto {
 		super();
 	}
 	
-	public ProjectionDto(int id, Date date, int nb_place_libre, float tarif) {
+	public ProjectionDto(int id, String date, int nb_place_libre, float tarif) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -28,11 +28,11 @@ public class ProjectionDto {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

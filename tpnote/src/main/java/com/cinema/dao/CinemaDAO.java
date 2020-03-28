@@ -38,6 +38,6 @@ public abstract class CinemaDAO<T> {
 	abstract public T findById(int id);
 	abstract public boolean save(T obj);
 	abstract public boolean delete(int id);
-	abstract public boolean update(T obj);
+	abstract public boolean update(int id,T obj);
 
 }

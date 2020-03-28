@@ -2,10 +2,10 @@ package com.cinema.dto;
 
 public class ActeurDto {
 
-	private int id;
-	private String nom;
-	private String prenom;
-	private String date_naissance;
+	private int id=-1;
+	private String nom=null;
+	private String prenom=null;
+	private String date_naissance=null;
 	
 	public ActeurDto() {};
 	

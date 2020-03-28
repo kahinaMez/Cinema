@@ -4,15 +4,15 @@ import java.sql.Date;
 
 public class FilmDto {
 	private int id;
-	private String nom;
-	private Date date_sortie;
+	private String titre;
+	private String date_sortie;
 	private String genre;
 	
 	public FilmDto() {};
-	public FilmDto(int id, String nom, Date date_sortie, String genre) {
+	public FilmDto(int id, String titre, String date_sortie, String genre) {
 		super();
 		this.id = id;
-		this.nom = nom;
+		this.titre = titre;
 		this.date_sortie = date_sortie;
 		this.genre = genre;
 	}
@@ -22,16 +22,16 @@ public class FilmDto {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNom() {
-		return nom;
+	public String getTitre() {
+		return titre;
 	}
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setTitre(String titre) {
+		this.titre = titre;
 	}
-	public Date getDate_sortie() {
+	public String getDate_sortie() {
 		return date_sortie;
 	}
-	public void setDate_sortie(Date date_sortie) {
+	public void setDate_sortie(String date_sortie) {
 		this.date_sortie = date_sortie;
 	}
 	public String getGenre() {
@@ -39,6 +39,10 @@ public class FilmDto {
 	}
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+	@Override
+	public String toString() {
+		return "FilmDto [id=" + id + ", titre=" + titre + ", date_sortie=" + date_sortie + ", genre=" + genre + "]";
 	} 
 	
 	
