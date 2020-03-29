@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="276.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.controllers.HomeController">
+<AnchorPane prefHeight="560.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.controllers.HomeController">
    <children>
-      <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="-3.0" layoutY="-4.0" prefHeight="45.0" prefWidth="270.0" text="Formulaire">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Hyperlink layoutX="76.0" layoutY="104.0" text="cliquez ici" />
+      <ScrollPane prefHeight="276.0" prefWidth="386.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane prefHeight="562.0" prefWidth="586.0">
+               <children>
+                  <Label layoutX="237.0" layoutY="14.0" prefHeight="36.0" prefWidth="112.0" text="Cinema" AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="237.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="Arial Bold Italic" size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="336.0" fitWidth="586.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="77.0">
+                     <image>
+                        <Image url="@../img/Sonic-Movie-Poster-Speed-2-1280x720.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

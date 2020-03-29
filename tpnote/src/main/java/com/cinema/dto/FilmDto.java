@@ -1,12 +1,10 @@
 package com.cinema.dto;
 
-import java.sql.Date;
-
 public class FilmDto {
-	private int id;
-	private String titre;
-	private String date_sortie;
-	private String genre;
+	private int id=-1;
+	private String titre=null;
+	private String date_sortie=null;
+	private String genre=null;
 	
 	public FilmDto() {};
 	public FilmDto(int id, String titre, String date_sortie, String genre) {

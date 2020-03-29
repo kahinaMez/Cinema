@@ -3,16 +3,22 @@ package com.cinema.dto;
 import java.sql.Date;
 
 public class ProjectionDto {
-	private int id;
-	private String date;
-	private int nb_place_libre;
-	private float tarif;
+	@Override
+	public String toString() {
+		return "ProjectionDto [id=" + id + ", date=" + date + ", nb_place_libre=" + nb_place_libre + ", tarif=" + tarif
+				+ "]";
+	}
+
+	private int id=-1;
+	private String date=null;
+	private int nb_place_libre=-1;
+	private double tarif=-1;
 	
 	public ProjectionDto() {
 		super();
 	}
 	
-	public ProjectionDto(int id, String date, int nb_place_libre, float tarif) {
+	public ProjectionDto(int id, String date, int nb_place_libre, double tarif) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -44,11 +50,11 @@ public class ProjectionDto {
 		this.nb_place_libre = nb_place_libre;
 	}
 
-	public float getTarif() {
+	public double getTarif() {
 		return tarif;
 	}
 
-	public void setTarif(float tarif) {
+	public void setTarif(double tarif) {
 		this.tarif = tarif;
 	}
 

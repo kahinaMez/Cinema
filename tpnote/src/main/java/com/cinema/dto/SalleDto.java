@@ -1,25 +1,30 @@
 package com.cinema.dto;
 
 public class SalleDto {
-	private int id;
-	private int nb_place;
+	private int n_salle=-1;
+	private int nb_place=-1;
 	
 	public SalleDto() {
 		super();
 	}
 
-	public SalleDto(int id, int nb_place) {
+	public SalleDto(int n_salle, int nb_place) {
 		super();
-		this.id = id;
+		this.n_salle = n_salle;
 		this.nb_place = nb_place;
 	}
 
-	public int getId() {
-		return id;
+	@Override
+	public String toString() {
+		return "SalleDto [n_salle=" + n_salle + ", nb_place=" + nb_place + "]";
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getN_salle() {
+		return n_salle;
+	}
+
+	public void setN_salle(int n_salle) {
+		this.n_salle = n_salle;
 	}
 
 	public int getNb_place() {

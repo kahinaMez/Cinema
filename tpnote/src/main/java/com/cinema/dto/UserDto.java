@@ -3,17 +3,23 @@ package com.cinema.dto;
 import java.sql.Date;
 
 public class UserDto {
-	private int id;
-	private String nom;
-	private String prenom;
-	private Date date;
-	private String adresse;
-	private String mdp;
-	private String mail;
+	private int id=-1;
+	private String nom=null;
+	private String prenom=null;
+	private String date=null;
+	private String adresse=null;
+	private String mdp=null;
+	private String mail=null;
 	
+	@Override
+	public String toString() {
+		return "UserDto [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", date=" + date + ", adresse=" + adresse
+				+ ", mdp=" + mdp + ", mail=" + mail + "]";
+	}
+
 	public UserDto() {}
 	
-	public UserDto(int id, String nom, String prenom, Date date, String adresse, String mdp, String mail) {
+	public UserDto(int id, String nom, String prenom, String date, String adresse, String mdp, String mail) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -41,10 +47,10 @@ public class UserDto {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getAdresse() {

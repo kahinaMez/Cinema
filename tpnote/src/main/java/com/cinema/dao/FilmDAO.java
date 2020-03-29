@@ -109,28 +109,28 @@ public List<FilmDto> findAll() {
 	public boolean update(int id,FilmDto obj) {
 		try {
 			PreparedStatement st =CinemaDAO.cn.prepareStatement("update film set id=?,titre=?,date_sortie=?,genre=? where id=?");
-			FilmDto act= this.findById(id);
+			FilmDto fil= this.findById(id);
 			
 			if(obj.getId()==-1)
-				st.setInt(1, act.getId());
+				st.setInt(1, fil.getId());
 			else
 				st.setInt(1, obj.getId());
 			
 			
 			if(obj.getTitre()==null)
-				st.setString(2, act.getTitre());
+				st.setString(2, fil.getTitre());
 			else 
 				st.setString(2, obj.getTitre());
 			
 			
 			if(obj.getDate_sortie()==null)
-				st.setString(3, act.getDate_sortie());
+				st.setString(3, fil.getDate_sortie());
 			else 
 				st.setString(3, obj.getDate_sortie());
 			
 			
 			if(obj.getGenre()==null)
-				st.setString(4, act.getGenre());
+				st.setString(4, fil.getGenre());
 			else 
 				st.setString(4, obj.getGenre());
 			

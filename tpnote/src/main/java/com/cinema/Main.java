@@ -4,8 +4,15 @@ import java.util.List;
 
 import com.cinema.dao.ActeurDAO;
 import com.cinema.dao.FilmDAO;
+import com.cinema.dao.ProjectionDAO;
+import com.cinema.dao.SalleDAO;
+import com.cinema.dao.UserDAO;
 import com.cinema.dto.ActeurDto;
 import com.cinema.dto.FilmDto;
+import com.cinema.dto.ProjectionDto;
+import com.cinema.dto.SalleDto;
+import com.cinema.dto.UserDto;
+import com.mysql.cj.x.protobuf.MysqlxCrud.Projection;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,55 +22,73 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
+
 	@Override
     public void start(Stage stage) throws Exception {
-       /*Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/Home.fxml"));
+       Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/Home.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        stage.show();*/
+        stage.show();
     }
 
     public static void main(String[] args) {
-    	FilmDAO dao=new FilmDAO();
-    	FilmDto film=new FilmDto(3,"speederman","2013-05-06","fantastique");
-    	//FilmDto film2=new FilmDto(2,"game of thrones","2015-06-06","fantastique");
+    	UserDAO dao=new UserDAO();
+    	//UserDto user=new UserDto(1,"meziani","kahina","1993-07-06","36 avenue de brogny","kahina123","kahina.meziani@hotmail.com");
+    	UserDto user2=new UserDto(6,"aissaoui","walid","1993-07-06","36 avenue de brogny","kahina123","kahina.meziani@hotmail.com");
+    	//UserDto user3=new UserDto(3,"benmaamar","yasmine","1993-07-06","36 avenue de brogny","kahina123","kahina.meziani@hotmail.com");
     	
-    	//dao.save(film2);
-    	//dao.save(film);
+    	//dao.save(user);
+    	//dao.save(user2);
+    	//dao.save(user3);
     	
-    	dao.update(2,film);
-    	
-    	//List<FilmDto> films=dao.findAll();
-    	
-    	
-    	
-    	//for(FilmDto film : films) 
-    		System.out.println(film);
     	//dao.delete(3);
+    	//System.out.println(dao.findAll());
     	
-    	/*ActeurDAO dao=new ActeurDAO();
-    //	dao.delete(4);
-    	ActeurDto acteur=new ActeurDto(45,"meziani","kahina","1993-07-06");
-    	dao.save(acteur);
-    	acteur=dao.findById(45);
-    	System.out.println(acteur);
+    	//UserDto use=dao.findById(2);
+    	//System.out.println(use);
+    	
+    	dao.update(1, user2);
+    	
+    	//SalleDAO dao= new SalleDAO();
+    	//SalleDto salle=new SalleDto(1,50);
+    	//SalleDto salle1=new SalleDto(2,51);
+    	//SalleDto salle2=new SalleDto(3,52);
+    	//SalleDto salle3=new SalleDto(4,53);
+    	//dao.save(salle);
+    	//dao.save(salle1);
+    	//dao.save(salle2);
+    	//dao.save(salle3);
+    	
+    	//System.out.println(dao.delete(3));
+    	
+    	//SalleDto sal=dao.findById(1);
+    	//System.out.println(sal);
+    	
+    	//System.out.println(dao.findAll());    	
+    	
+    	//dao.update(1, salle2);
     	
     	
     	
+    	//ProjectionDAO dao=new ProjectionDAO();
+    	//ProjectionDto projection=new ProjectionDto(3,"1996-06-06",35,8.5);
+    	//ProjectionDto projection2=new ProjectionDto(6,"1997-08-06",36,8.5);
+    	//dao.save(projection);
+    	//dao.save(projection2);
     	
-    	/* ActeurDto acteur=new ActeurDto(1,"meziani","kahina","1993-07-06");
+    	//ProjectionDto projection2=dao.findById(3);
+    	//System.out.println(projection2);
     	
-    	boolean res=dao.save(acteur);
-    	if(res)
-    		System.out.println("Opération réussie");
-    	else 
-    		System.out.println("Echec de l'operation");
+    	//System.out.println(dao.delete(3));
     	
-    	System.out.println("Runnig application ...");*/
+    	//dao.update(6, projection); 
     	
-        launch(args);
+    	//List<ProjectionDto> list=dao.findAll();
+    	//for()
+    	//System.out.println(list);
+       // launch(args);
     
 
     }
