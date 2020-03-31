@@ -73,10 +73,10 @@ public class SalleDAO extends CinemaDAO <SalleDto>{
 				st =CinemaDAO.cn.prepareStatement("insert into salle (nb_place) values (?)");
 			}
 			else {
-				st =CinemaDAO.cn.prepareStatement("insert into salle (n_salle,nb_place) values (?,?)");
-				st.setInt(1, obj.getN_salle());
+				st =CinemaDAO.cn.prepareStatement("insert into salle (nb_place,n_salle) values (?,?)");
+				st.setInt(2, obj.getN_salle());
 			}
-			st.setInt(2, obj.getNb_place());
+			st.setInt(1, obj.getNb_place());
 			if(st.executeUpdate()==1) 
 				return true;
 			

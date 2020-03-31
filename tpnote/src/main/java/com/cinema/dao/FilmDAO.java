@@ -15,7 +15,7 @@ public List<FilmDto> findAll() {
 		List<FilmDto> films = new ArrayList<FilmDto>();
 		try {
 			//Requete vers la base de données pour récupérer la liste des films
-			PreparedStatement st =CinemaDAO.cn.prepareStatement("Select id,titre,date_sortie,genre from film");
+			PreparedStatement st =CinemaDAO.cn.prepareStatement("Select id,titre,date_sortie,genre,url from film");
 			
 			//Exécution de la requête et récupération du résultats
 			ResultSet result = st.executeQuery();
@@ -26,9 +26,10 @@ public List<FilmDto> findAll() {
 				String titre = result.getString(2);
 				String date_sortie = result.getString(3);
 				String genre = result.getString(4);
+				String url = result.getString(5);
 				
 				//Création d'un film
-				FilmDto film = new FilmDto(id,titre,date_sortie,genre);
+				FilmDto film = new FilmDto(id,titre,date_sortie,genre,url);
 				
 				//Ajout du film à la liste des films qui sera retrournée 
 				films.add(film);
@@ -43,7 +44,7 @@ public List<FilmDto> findAll() {
 	public FilmDto findById(int id) {
 		FilmDto film=new FilmDto();
 		try {
-			PreparedStatement st =CinemaDAO.cn.prepareStatement("Select id,titre,date_sortie,genre from film where id=?");
+			PreparedStatement st =CinemaDAO.cn.prepareStatement("Select id,titre,date_sortie,genre,url from film where id=?");
 			st.setInt(1, id);
 			ResultSet result = st.executeQuery();
 			
@@ -52,12 +53,14 @@ public List<FilmDto> findAll() {
 			String titre = result.getString(2);
 			String date_sortie = result.getString(3);
 			String genre = result.getString(4);
+			String url = result.getString(5);
 				
 			//Création d'un film
 			film.setId(id);
 			film.setTitre(titre);
 			film.setDate_sortie(date_sortie);
 			film.setGenre(genre);
+			film.setUrl(url);
 				
 		} catch (SQLException e) {
 			
@@ -70,15 +73,16 @@ public List<FilmDto> findAll() {
 		try {
 			PreparedStatement st;
 			if (obj.getId()==-1) {
-				st =FilmDAO.cn.prepareStatement("insert into film (titre,date_sortie,genre) values (?,?,?)");
+				st =FilmDAO.cn.prepareStatement("insert into film (titre,date_sortie,genre,url) values (?,?,?)");
 			}
 			else {
-				st =CinemaDAO.cn.prepareStatement("insert into film (titre,date_sortie,genre,id) values (?,?,?,?)");
-				st.setInt(4, obj.getId());
+				st =CinemaDAO.cn.prepareStatement("insert into film (titre,date_sortie,genre,url,id) values (?,?,?,?)");
+				st.setInt(5, obj.getId());
 			}
 			st.setString(1, obj.getTitre());
 			st.setString(2, obj.getDate_sortie());
 			st.setString(3, obj.getGenre());
+			st.setString(4, obj.getUrl());
 			if(st.executeUpdate()==1) 
 				return true;
 			
@@ -108,33 +112,38 @@ public List<FilmDto> findAll() {
 	@Override
 	public boolean update(int id,FilmDto obj) {
 		try {
-			PreparedStatement st =CinemaDAO.cn.prepareStatement("update film set id=?,titre=?,date_sortie=?,genre=? where id=?");
-			FilmDto fil= this.findById(id);
+			PreparedStatement st =CinemaDAO.cn.prepareStatement("update film set id=?,titre=?,date_sortie=?,genre=?,url=? where id=?");
+			FilmDto film= this.findById(id);
 			
 			if(obj.getId()==-1)
-				st.setInt(1, fil.getId());
+				st.setInt(1, film.getId());
 			else
 				st.setInt(1, obj.getId());
 			
 			
 			if(obj.getTitre()==null)
-				st.setString(2, fil.getTitre());
+				st.setString(2, film.getTitre());
 			else 
 				st.setString(2, obj.getTitre());
 			
 			
 			if(obj.getDate_sortie()==null)
-				st.setString(3, fil.getDate_sortie());
+				st.setString(3, film.getDate_sortie());
 			else 
 				st.setString(3, obj.getDate_sortie());
 			
 			
 			if(obj.getGenre()==null)
-				st.setString(4, fil.getGenre());
+				st.setString(4, film.getGenre());
 			else 
 				st.setString(4, obj.getGenre());
 			
-			st.setInt(5, id);
+			if(obj.getUrl()==null)
+				st.setString(5, film.getUrl());
+			else
+				st.setString(5, obj.getUrl());
+			
+			st.setInt(6, id);
 			
 			
 			if(st.executeUpdate()==1) 

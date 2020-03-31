@@ -86,15 +86,15 @@ public class UserDAO extends CinemaDAO <UserDto> {
 				st =CinemaDAO.cn.prepareStatement("insert into user (nom,prenom,dateN,adresse,mdp,email) values (?,?,?,?,?,?)");
 			}
 			else {
-				st =CinemaDAO.cn.prepareStatement("insert into user (id,nom,prenom,dateN,adresse,mdp,email) values (?,?,?,?,?,?,?)");
-				st.setInt(1, obj.getId());
+				st =CinemaDAO.cn.prepareStatement("insert into user (nom,prenom,dateN,adresse,mdp,email,id) values (?,?,?,?,?,?,?)");
+				st.setInt(7, obj.getId());
 			}
-			st.setString(2, obj.getNom());
-			st.setString(3, obj.getPrenom());
-			st.setString(4, obj.getDate());
-			st.setString(5, obj.getAdresse());
-			st.setString(6, obj.getMdp());
-			st.setString(7, obj.getMail());
+			st.setString(1, obj.getNom());
+			st.setString(2, obj.getPrenom());
+			st.setString(3, obj.getDate());
+			st.setString(4, obj.getAdresse());
+			st.setString(5, obj.getMdp());
+			st.setString(6, obj.getMail());
 			if(st.executeUpdate()==1) 
 				return true;
 			
