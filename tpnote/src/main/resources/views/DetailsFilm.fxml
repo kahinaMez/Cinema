@@ -1,8 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
 
+<Pane prefHeight="362.0" prefWidth="713.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="309.0" fitWidth="406.0" layoutX="12.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../Desktop/avengers-endgame-original-movie-poster-15x21-in-2019-anthony-russo-robert-downey-jr.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="320.0" prefHeight="17.0" prefWidth="236.0" text="Avengers">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="270.0" layoutY="12.0" prefHeight="31.0" prefWidth="174.0" text="Détails du film :">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="270.0" layoutY="58.0" prefHeight="20.0" prefWidth="58.0" text="Genre :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="323.0" layoutY="58.0" prefHeight="17.0" prefWidth="64.0" text="Action" textFill="#0c6997">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="271.0" layoutY="96.0" prefHeight="17.0" prefWidth="105.0" text="Date de sortie :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="376.0" layoutY="96.0" text="21/01/1993" textFill="#0c6997">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="271.0" layoutY="175.0" prefHeight="30.0" prefWidth="236.0" text="Informations projection :">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="270.0" layoutY="134.0" text="Afficher la liste des acteurs" textFill="#da2b2b">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Button layoutX="556.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Réserver">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="271.0" layoutY="219.0" prefHeight="17.0" prefWidth="143.0" text="Date de projection :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="406.0" layoutY="219.0" text="21/01/1993" textFill="#0c6997">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="270.0" layoutY="255.0" prefHeight="20.0" prefWidth="174.0" text="Nombre de places libres : ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="441.0" layoutY="255.0" prefHeight="17.0" prefWidth="64.0" text="18" textFill="#0c6997">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Separator layoutX="270.0" layoutY="165.0" prefHeight="2.0" prefWidth="235.0" />
+   </children>
+</Pane>
