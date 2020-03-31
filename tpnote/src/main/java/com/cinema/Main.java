@@ -25,7 +25,7 @@ public class Main extends Application{
 
 	@Override
     public void start(Stage stage) throws Exception {
-       Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/Home.fxml"));
+       Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/Forumulaire.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -34,9 +34,9 @@ public class Main extends Application{
     }
 
     public static void main(String[] args) {
-    	UserDAO dao=new UserDAO();
+    	//UserDAO dao=new UserDAO();
     	//UserDto user=new UserDto(1,"meziani","kahina","1993-07-06","36 avenue de brogny","kahina123","kahina.meziani@hotmail.com");
-    	UserDto user2=new UserDto(6,"aissaoui","walid","1993-07-06","36 avenue de brogny","kahina123","kahina.meziani@hotmail.com");
+    	//UserDto user2=new UserDto(6,"aissaoui","walid","1993-07-06","36 avenue de brogny","kahina123","kahina.meziani@hotmail.com");
     	//UserDto user3=new UserDto(3,"benmaamar","yasmine","1993-07-06","36 avenue de brogny","kahina123","kahina.meziani@hotmail.com");
     	
     	//dao.save(user);
@@ -49,7 +49,7 @@ public class Main extends Application{
     	//UserDto use=dao.findById(2);
     	//System.out.println(use);
     	
-    	dao.update(1, user2);
+    	//dao.update(1, user2);
     	
     	//SalleDAO dao= new SalleDAO();
     	//SalleDto salle=new SalleDto(1,50);
@@ -88,7 +88,7 @@ public class Main extends Application{
     	//List<ProjectionDto> list=dao.findAll();
     	//for()
     	//System.out.println(list);
-       // launch(args);
+    	launch(args);
     
 
     }
