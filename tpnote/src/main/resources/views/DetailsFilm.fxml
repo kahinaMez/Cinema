@@ -10,7 +10,7 @@
 
 <fx:root prefHeight="362.0" prefWidth="713.0" style="-fx-background-color: white; -fx-border-radius: 20;" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="poster" fitHeight="309.0" fitWidth="406.0" layoutX="12.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="poster" fitHeight="309.0" fitWidth="251.0" layoutX="12.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
       <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="320.0" prefHeight="17.0" prefWidth="236.0">
          <font>
@@ -27,7 +27,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="genre" layoutX="323.0" layoutY="58.0" prefHeight="17.0" prefWidth="64.0" textFill="#0c6997">
+      <Label fx:id="genre" layoutX="323.0" layoutY="58.0" prefHeight="20.0" prefWidth="369.0" textFill="#0c6997">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -37,7 +37,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="dateSortie" layoutX="376.0" layoutY="96.0" textFill="#0c6997">
+      <Label fx:id="dateSortie" layoutX="376.0" layoutY="96.0" prefHeight="20.0" prefWidth="322.0" textFill="#0c6997">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -52,7 +52,7 @@
             <Font size="14.0" />
          </font>
       </Hyperlink>
-      <Button fx:id="reserver" layoutX="556.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="Réserver">
+      <Button fx:id="reserver" layoutX="556.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserver" prefHeight="25.0" prefWidth="143.0" text="Réserver">
          <font>
             <Font size="14.0" />
          </font>
@@ -62,7 +62,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="dateProjection" layoutX="406.0" layoutY="219.0" textFill="#0c6997">
+      <Label fx:id="dateProjection" layoutX="406.0" layoutY="219.0" prefHeight="20.0" prefWidth="158.0" textFill="#0c6997">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -72,7 +72,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="nbPlaces" layoutX="441.0" layoutY="255.0" prefHeight="17.0" prefWidth="64.0" textFill="#0c6997">
+      <Label fx:id="nbPlaces" layoutX="441.0" layoutY="255.0" prefHeight="20.0" prefWidth="105.0" textFill="#0c6997">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

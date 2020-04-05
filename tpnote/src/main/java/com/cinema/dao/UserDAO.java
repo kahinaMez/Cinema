@@ -180,7 +180,36 @@ public class UserDAO extends CinemaDAO <UserDto> {
 		return false;
 	}
 
-	
+	public UserDto seConnecter(String utilisateur,String mdp) {
+		UserDto user=new UserDto();
+		try {
+			
+			PreparedStatement st =CinemaDAO.cn.prepareStatement("select id,nom,prenom,dateN,adresse,email from user where mdp=? and email=?");
+			st.setString(1, mdp);
+			st.setString(2, utilisateur);
+			ResultSet result = st.executeQuery();
+			result.next();
+			int id = result.getInt(1);
+			String nom = result.getString(2);
+			String prenom=result.getString(3);
+			String date=result.getString(4);
+			String adresse=result.getString(5);
+			String email=result.getString(6);
+			
+			user.setId(id);
+			user.setNom(nom);
+			user.setPrenom(prenom);
+			user.setDate(date);
+			user.setAdresse(adresse);
+			user.setMdp(mdp);
+			user.setMail(email);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	}
 
 
 	

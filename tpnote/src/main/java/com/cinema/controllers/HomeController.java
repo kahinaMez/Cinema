@@ -49,15 +49,7 @@ public class HomeController implements Initializable{
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		root.heightProperty().addListener(new ChangeListener<Number>() {
 
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
 		root.widthProperty().addListener(new ChangeListener<Number>() {
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				resizeImage();

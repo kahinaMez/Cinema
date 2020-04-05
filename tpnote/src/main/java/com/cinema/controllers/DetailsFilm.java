@@ -2,6 +2,8 @@ package com.cinema.controllers;
 
 import java.io.IOException;
 
+import com.cinema.models.ProjectionDetail;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -14,6 +16,10 @@ import javafx.scene.layout.Pane;
 public class DetailsFilm extends Pane{
 	
 	private static final String DEVISE = "Euro";
+	private static final double WIDTH = 713;
+	private static final double HEIGHT = 362;
+	
+	private ProjectionDetail projection;
 	
 	@FXML private ImageView poster;
 	@FXML private Label title;
@@ -26,7 +32,7 @@ public class DetailsFilm extends Pane{
 	@FXML private Label tarif;
 	
 	
-	public DetailsFilm () {
+	public DetailsFilm (ProjectionDetail projection) {
 		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/DetailsFilm.fxml"));
 		loader.setRoot(this);
 		loader.setController(this);
@@ -36,6 +42,19 @@ public class DetailsFilm extends Pane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+		
+		this.projection = projection;
+		setComponenets();
+	}
+	
+	private void setComponenets() {
+		this.setPoster(this.projection.getFilm().getUrl());
+		this.setTitle(this.projection.getFilm().getTitre());
+		this.setGenre(this.projection.getFilm().getGenre());
+		this.setDateSortie(this.projection.getFilm().getDate_sortie());
+		this.setDateProjection(this.projection.getProjection().getDate());
+		this.setNbPlaces(this.projection.getProjection().getNb_place_libre());
+		this.setTarif(this.projection.getProjection().getTarif());
 	}
 	
 	public void setPoster(String link) {
@@ -63,11 +82,20 @@ public class DetailsFilm extends Pane{
 		this.nbPlaces.setText(""+nbPlaces);
 	}
 	
-	public void setTarif(int tarif) {
+	public void setTarif(double tarif) {
 		this.tarif.setText(tarif+" "+DEVISE);
 	}
 	
+	public static double getRootWidth() {
+		return DetailsFilm.WIDTH;
+	}
+	
+	public static double getRootHeight() {
+		return DetailsFilm.HEIGHT;
+	}
+	
+	@FXML
 	public void reserver() {
-		
+		System.out.println("Projection "+this.projection.getProjection().getId());
 	}
 }
