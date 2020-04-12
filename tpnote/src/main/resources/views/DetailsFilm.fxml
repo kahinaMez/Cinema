@@ -52,7 +52,7 @@
             <Font size="14.0" />
          </font>
       </Hyperlink>
-      <Button fx:id="reserver" layoutX="556.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserver" prefHeight="25.0" prefWidth="143.0" text="Réserver">
+      <Button fx:id="reserver" layoutX="556.0" layoutY="295.0" mnemonicParsing="false" onAction="#reserver" prefHeight="25.0" prefWidth="143.0" text="Réserver" style="-fx-background-color: #05386b#05386b; -fx-cursor: HAND;" textFill="#edf5e1">
          <font>
             <Font size="14.0" />
          </font>

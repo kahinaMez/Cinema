@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.cinema.dto.SalleDto;
 import com.cinema.dto.UserDto;
 
 public class UserDAO extends CinemaDAO <UserDto> {
@@ -53,23 +52,23 @@ public class UserDAO extends CinemaDAO <UserDto> {
 			ResultSet result = st.executeQuery();
 			
 			//Parcrous du résultat
-			result.next();
-			String nom = result.getString(2);
-			String prenom = result.getString(3);
-			String dateN = result.getString(4);
-			String adresse = result.getString(5);
-			String mdp = result.getString(6);
-			String email = result.getString(7);
-		
+			if(result.next()) {
+				String nom = result.getString(2);
+				String prenom = result.getString(3);
+				String dateN = result.getString(4);
+				String adresse = result.getString(5);
+				String mdp = result.getString(6);
+				String email = result.getString(7);
 				
-			//Création d'un utilisateur
-			user.setId(id);
-			user.setNom(nom);
-			user.setPrenom(prenom);
-			user.setDate(dateN);
-			user.setAdresse(adresse);
-			user.setMdp(mdp);
-			user.setMail(email);
+				//Création d'un utilisateur
+				user.setId(id);
+				user.setNom(nom);
+				user.setPrenom(prenom);
+				user.setDate(dateN);
+				user.setAdresse(adresse);
+				user.setMdp(mdp);
+				user.setMail(email);
+			}
 				
 		} catch (SQLException e) {
 			
@@ -188,21 +187,25 @@ public class UserDAO extends CinemaDAO <UserDto> {
 			st.setString(1, mdp);
 			st.setString(2, utilisateur);
 			ResultSet result = st.executeQuery();
-			result.next();
-			int id = result.getInt(1);
-			String nom = result.getString(2);
-			String prenom=result.getString(3);
-			String date=result.getString(4);
-			String adresse=result.getString(5);
-			String email=result.getString(6);
 			
-			user.setId(id);
-			user.setNom(nom);
-			user.setPrenom(prenom);
-			user.setDate(date);
-			user.setAdresse(adresse);
-			user.setMdp(mdp);
-			user.setMail(email);
+			if(result.next()) {
+				int id = result.getInt(1);
+				String nom = result.getString(2);
+				String prenom=result.getString(3);
+				String date=result.getString(4);
+				String adresse=result.getString(5);
+				String email=result.getString(6);
+				
+				user.setId(id);
+				user.setNom(nom);
+				user.setPrenom(prenom);
+				user.setDate(date);
+				user.setAdresse(adresse);
+				user.setMdp(mdp);
+				user.setMail(email);
+			}
+			
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -210,7 +213,5 @@ public class UserDAO extends CinemaDAO <UserDto> {
 		}
 		return user;
 	}
-
-
 	
 }

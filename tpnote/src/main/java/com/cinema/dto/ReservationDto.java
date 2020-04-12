@@ -1,21 +1,23 @@
 package com.cinema.dto;
 
 public class ReservationDto {
-	private int id_user;
-	private int id_projection;
-	private int n_reservation;
-	private boolean validation;
+	private int id_user = -1;
+	private int id_projection = -1;
+	private int n_reservation = -1;
+	private boolean validation = false;
+	private String dateReservation = null;
 	
 	public ReservationDto() {
 		super();
 	}
 
-	public ReservationDto(int id_user, int id_projection, int n_reservation, boolean validation) {
+	public ReservationDto(int id_user, int id_projection, int n_reservation,String dateReservation, boolean validation) {
 		super();
 		this.id_user = id_user;
 		this.id_projection = id_projection;
 		this.n_reservation = n_reservation;
 		this.validation = validation;
+		this.dateReservation = dateReservation;
 	}
 
 	public int getId_user() {
@@ -49,10 +51,13 @@ public class ReservationDto {
 	public void setValidation(boolean validation) {
 		this.validation = validation;
 	}
-	
-	
-	
-	
-	
 
+	public String getDateReservation() {
+		return dateReservation;
+	}
+
+	public void setDateReservation(String dateReservation) {
+		this.dateReservation = dateReservation;
+	}
+	
 }

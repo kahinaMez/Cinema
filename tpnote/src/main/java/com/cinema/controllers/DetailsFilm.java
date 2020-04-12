@@ -2,7 +2,10 @@ package com.cinema.controllers;
 
 import java.io.IOException;
 
+import com.cinema.models.Payement;
 import com.cinema.models.ProjectionDetail;
+import com.cinema.models.User;
+import com.cinema.utils.Scenes;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -96,6 +99,15 @@ public class DetailsFilm extends Pane{
 	
 	@FXML
 	public void reserver() {
-		System.out.println("Projection "+this.projection.getProjection().getId());
+		User user = User.getInstance();
+		Scenes sc = Scenes.getInstance();
+		if(user.isConnected()) {
+			Payement payement = Payement.getInstance();
+			payement.setProjection(this.projection.getProjection().getId());
+			payement.setPrix(this.projection.getProjection().getTarif());
+			sc.switchToPayment();
+		}
+		else
+			sc.switchToLoginScene();
 	}
 }

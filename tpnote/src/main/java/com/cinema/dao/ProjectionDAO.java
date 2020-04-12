@@ -51,20 +51,21 @@ public class ProjectionDAO extends CinemaDAO<ProjectionDto> {
 			ResultSet result = st.executeQuery();
 			
 			//Parcrous du résultat
-			result.next();
-			String date = result.getString(2);
-			int nb_place_libre= result.getInt(3);
-			double tarif = result.getDouble(4);
-			int id_film = result.getInt(5);
-			int id_salle = result.getInt(6);
-				
-			//Création d'une projection
-			projection.setId(id);
-			projection.setDate(date);
-			projection.setNb_place_libre(nb_place_libre);
-			projection.setTarif(tarif);
-			projection.setId_film(id_film);
-			projection.setId_salle(id_salle);
+			if(result.next()){
+				String date = result.getString(2);
+				int nb_place_libre= result.getInt(3);
+				double tarif = result.getDouble(4);
+				int id_film = result.getInt(5);
+				int id_salle = result.getInt(6);
+					
+				//Création d'une projection
+				projection.setId(id);
+				projection.setDate(date);
+				projection.setNb_place_libre(nb_place_libre);
+				projection.setTarif(tarif);
+				projection.setId_film(id_film);
+				projection.setId_salle(id_salle);
+			}
 			
 		} catch (SQLException e) {
 			

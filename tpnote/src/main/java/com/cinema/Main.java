@@ -1,23 +1,8 @@
 package com.cinema;
 
-import java.util.List;
+import com.cinema.utils.Scenes;
 
-import com.cinema.dao.ActeurDAO;
-import com.cinema.dao.FilmDAO;
-import com.cinema.dao.ProjectionDAO;
-import com.cinema.dao.SalleDAO;
-import com.cinema.dao.UserDAO;
-import com.cinema.dto.ActeurDto;
-import com.cinema.dto.FilmDto;
-import com.cinema.dto.ProjectionDto;
-import com.cinema.dto.SalleDto;
-import com.cinema.dto.UserDto;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Projection;
-
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.application.Application; 
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -25,12 +10,8 @@ public class Main extends Application{
 
 	@Override
     public void start(Stage stage) throws Exception {
-       Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/Login.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
+	   Scenes sc = new Scenes(stage);
+	   sc.switchToProjectionsScene();
     }
 
     public static void main(String[] args) {

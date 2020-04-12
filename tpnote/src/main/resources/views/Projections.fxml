@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,17 +9,43 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="333.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.controllers.ProjectionsController">
+<AnchorPane fx:id="root" prefHeight="561.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cinema.controllers.ProjectionsController">
    <children>
-      <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane prefWidth="946.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
-            <VBox fx:id="container" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" >
+            <VBox fx:id="container" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="702.0" style="-fx-background-color: #f5f5f5;">
                <children>
+                  <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="702.0" style="-fx-background-color: #32325d;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="196.0">
+                           <children>
+                              <Label prefHeight="35.0" prefWidth="212.0" text="CINEMA COSMOS" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bell MT" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label fx:id="message" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="261.0" text="Vous n'etes pas encore connecté" textFill="#8789cd">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </Label>
+                              <Button fx:id="cnBtn" mnemonicParsing="false" onAction="#connexion" prefHeight="32.0" prefWidth="231.0" style="-fx-background-color: #05386b#05386b; -fx-cursor: HAND;" text="Se Connecter" textFill="#edf5e1" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                   <HBox fx:id="title" alignment="TOP_CENTER" prefHeight="21.0" prefWidth="703.0">
                      <children>
-                        <Label text="Liste des projections">
+                        <Label text="Liste des projections" textFill="#8789cd">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
                      </children>

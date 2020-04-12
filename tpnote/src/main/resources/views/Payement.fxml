@@ -1,55 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.cinema.controllers.PayementContoller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
-      <Label alignment="CENTER_RIGHT" layoutX="140.0" layoutY="20.0" prefHeight="25.0" prefWidth="229.0" text="Confirmation de la réservation ">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <Label layoutX="30.0" layoutY="88.0" text="Paiement">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <padding>
-            <Insets left="-8.0" />
-         </padding>
-      </Label>
-      <RadioButton layoutX="80.0" layoutY="131.0" mnemonicParsing="false" text="PayPal">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </RadioButton>
-      <RadioButton layoutX="80.0" layoutY="168.0" mnemonicParsing="false" text="Carte de Crédit/D'ébit">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </RadioButton>
-      <JFXTextField layoutX="146.0" layoutY="13.0" prefHeight="32.0" prefWidth="221.0" />
-      <Label layoutX="24.0" layoutY="215.0" prefHeight="25.0" prefWidth="66.0" text="Total :">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <padding>
-            <Insets left="-1.0" />
-         </padding>
-      </Label>
-      <JFXTextField layoutX="23.0" layoutY="86.0" prefHeight="25.0" prefWidth="56.0" />
-      <JFXTextField layoutX="23.0" layoutY="215.0" prefHeight="25.0" prefWidth="40.0" />
-      <Text layoutX="300.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="24.30 euro" />
-      <Button layoutX="146.0" layoutY="311.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="237.0" text="Validation" />
+      <VBox layoutX="22.0" layoutY="13.0" prefWidth="700.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" style="-fx-background-color: #32325d;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="68.0" prefWidth="376.0" text="DETAILS DU PAIEMENT" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="700.0" />
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="700.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="225.0" text="Cartes acceptées :">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="70.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/logos.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="702.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="225.0" text="Nom et prénom sur la carte">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nom" prefHeight="35.0" prefWidth="295.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="700.0">
+               <children>
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="225.0" text="Numéro de la carte ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="numCarte" prefHeight="35.0" prefWidth="294.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label prefWidth="225.0" text="Date d'expiration de la carte ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="293.0">
+                     <children>
+                        <DatePicker fx:id="dateExpiration" prefHeight="35.0" prefWidth="120.0" />
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="95.0" text="CVC">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="cvc" prefHeight="35.0" prefWidth="120.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="44.0" prefWidth="700.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="423.0" text="Total à payer : ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="-1.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="prix" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="94.0" text="13 Euros">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="21.0" prefWidth="700.0">
+               <children>
+                  <Separator prefHeight="0.0" prefWidth="473.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Hyperlink onAction="#annuler" prefHeight="23.0" prefWidth="294.0" text="ANNULER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Button onAction="#valider" mnemonicParsing="false" prefHeight="25.0" prefWidth="237.0" style="-fx-background-color: white; -fx-border-color: black; -fx-cursor: hand;" text="VALIDER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

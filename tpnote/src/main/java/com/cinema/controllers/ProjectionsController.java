@@ -6,13 +6,19 @@ import java.util.ResourceBundle;
 import com.cinema.controllers.DetailsFilm;
 import com.cinema.models.Projection;
 import com.cinema.models.ProjectionDetail;
+import com.cinema.models.User;
+import com.cinema.utils.FxDialogs;
+import com.cinema.utils.Scenes;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -22,11 +28,14 @@ public class ProjectionsController implements Initializable{
 	@FXML private VBox container;
 	@FXML private AnchorPane root;
 	@FXML private HBox title;
+	@FXML private Label message;
+	@FXML private Button cnBtn;
 	
-	Projection model = new Projection();
+	private Projection model = new Projection();
 	
 	public void initialize(URL location, ResourceBundle resources) {
 		initAutoResize();
+		initMessage();
 		loadFilms();
 	}
 	
@@ -34,6 +43,19 @@ public class ProjectionsController implements Initializable{
 		for (ProjectionDetail proj : model.getProjections()) {
 			DetailsFilm detail = new DetailsFilm(proj);
 			this.addProjection(detail);
+		}
+	}
+	
+	private void initMessage() {
+		User u = User.getInstance();
+		
+		if(u.getUserId()==-1) {
+			this.message.setText("Vous n'etes pas encore connecté");
+			this.cnBtn.setText("Se Connecter");
+		}
+		else {
+			this.message.setText("Bienvenu "+u.getPrenom());
+			this.cnBtn.setText("Se déconnecter");
 		}
 	}
 	
@@ -59,4 +81,21 @@ public class ProjectionsController implements Initializable{
 		});
 	}
 	
+	@FXML
+	public void connexion(ActionEvent event) {
+		User u = User.getInstance();
+		
+		if(u.getUserId()!=-1) {
+			String options[] = {"Oui","Non","Annuler"};
+			String rep =FxDialogs.showConfirm("Se déconecter", "Voulez vous vraiment vous déconnecter",options);
+			if("oui".equals(rep.toLowerCase())) {
+				u.deconnexion();
+				this.initMessage();
+			}
+		}
+		else {
+			Scenes sc = Scenes.getInstance();
+			sc.switchToLoginScene();
+		}
+	}
 }

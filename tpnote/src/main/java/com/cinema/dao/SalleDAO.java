@@ -49,14 +49,15 @@ public class SalleDAO extends CinemaDAO <SalleDto>{
 			ResultSet result = st.executeQuery();
 			
 			//Parcrous du résultat
-			result.next();
-			int nb_place= result.getInt(2);
-			int n_salle=result.getInt(1);
-			
+			if(result.next()) {
+				int nb_place= result.getInt(2);
+				int n_salle=result.getInt(1);
 				
-			//Création d'une salle
-			salle.setN_salle(n_salle);
-			salle.setNb_place(nb_place);
+					
+				//Création d'une salle
+				salle.setN_salle(n_salle);
+				salle.setNb_place(nb_place);
+			}
 			
 		} catch (SQLException e) {
 			

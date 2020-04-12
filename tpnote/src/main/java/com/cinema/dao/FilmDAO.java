@@ -49,18 +49,20 @@ public List<FilmDto> findAll() {
 			ResultSet result = st.executeQuery();
 			
 			//Parcrous du résultat
-			result.next();
-			String titre = result.getString(2);
-			String date_sortie = result.getString(3);
-			String genre = result.getString(4);
-			String url = result.getString(5);
-				
-			//Création d'un film
-			film.setId(id);
-			film.setTitre(titre);
-			film.setDate_sortie(date_sortie);
-			film.setGenre(genre);
-			film.setUrl(url);
+			if(result.next()) {
+			
+				String titre = result.getString(2);
+				String date_sortie = result.getString(3);
+				String genre = result.getString(4);
+				String url = result.getString(5);
+					
+				//Création d'un film
+				film.setId(id);
+				film.setTitre(titre);
+				film.setDate_sortie(date_sortie);
+				film.setGenre(genre);
+				film.setUrl(url);
+			}
 				
 		} catch (SQLException e) {
 			
@@ -73,10 +75,10 @@ public List<FilmDto> findAll() {
 		try {
 			PreparedStatement st;
 			if (obj.getId()==-1) {
-				st =FilmDAO.cn.prepareStatement("insert into film (titre,date_sortie,genre,url) values (?,?,?)");
+				st =FilmDAO.cn.prepareStatement("insert into film (titre,date_sortie,genre,url) values (?,?,?,?)");
 			}
 			else {
-				st =CinemaDAO.cn.prepareStatement("insert into film (titre,date_sortie,genre,url,id) values (?,?,?,?)");
+				st =CinemaDAO.cn.prepareStatement("insert into film (titre,date_sortie,genre,url,id) values (?,?,?,?,?)");
 				st.setInt(5, obj.getId());
 			}
 			st.setString(1, obj.getTitre());

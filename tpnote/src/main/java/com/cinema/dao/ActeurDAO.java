@@ -51,16 +51,17 @@ public class ActeurDAO extends CinemaDAO<ActeurDto>{
 			ResultSet result = st.executeQuery();
 			
 			//Parcrous du résultat
-			result.next();
-			String nom = result.getString(2);
-			String prenom = result.getString(3);
-			String dateNaissance = result.getString(4);
-				
-			//Création d'un acteur
-			acteur.setId(id);
-			acteur.setNom(nom);
-			acteur.setPrenom(prenom);
-			acteur.setDate_naissance(dateNaissance);
+			if(result.next()) {
+				String nom = result.getString(2);
+				String prenom = result.getString(3);
+				String dateNaissance = result.getString(4);
+					
+				//Création d'un acteur
+				acteur.setId(id);
+				acteur.setNom(nom);
+				acteur.setPrenom(prenom);
+				acteur.setDate_naissance(dateNaissance);
+			}
 				
 		} catch (SQLException e) {
 			
@@ -115,10 +116,12 @@ public class ActeurDAO extends CinemaDAO<ActeurDto>{
 			PreparedStatement st =CinemaDAO.cn.prepareStatement("update acteur set id=?,nom=?,prenom=?,dateN=? where id=?");
 			ActeurDto act= this.findById(id);
 			
-			if(obj.getId()==-1)
+			if(obj.getId()==-1) {
 				st.setInt(1, act.getId());
-			else
+			}
+			else {
 				st.setInt(1, obj.getId());
+			}
 			
 			
 			if(obj.getNom()==null)

@@ -16,6 +16,12 @@ public class User {
 		return User.user;
 	}
 	
+	public boolean isConnected() {
+		if(userdto==null)
+			return false;
+		return true;
+	}
+	
 	public int getUserId() {
 		if(userdto==null)
 			return -1;
@@ -39,19 +45,34 @@ public class User {
 	
 	public boolean connexion(String username,String password) {
 		UserDto user = dao.seConnecter(username, password);
-		System.out.println(username);
 		if (user.getId()==-1) {
 			this.userdto = null;
 			return false;
 		}
 		else {
 			this.userdto=user;
-			System.out.println(user);
 			return true;
 		}
 	}
 	
 	public void deconnexion() {
 		this.userdto=null;
+	}
+	
+	public boolean creerCompte(String nom,String prenom,String daten,String email,String mdp,String adresse) {
+		UserDto user = new UserDto();
+		user.setNom(nom);
+		user.setPrenom(prenom);
+		user.setDate(daten);
+		user.setMail(email);
+		user.setMdp(mdp);
+		user.setAdresse(adresse);
+		
+		if ( dao.save(user)) {
+			this.userdto=dao.seConnecter(email, mdp);
+			return true;
+		}
+		
+		return false;
 	}
 }
