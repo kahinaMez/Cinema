@@ -2,8 +2,8 @@ package com.cinema.controllers;
 
 import java.io.IOException;
 
-import com.cinema.models.Payement;
 import com.cinema.models.ProjectionDetail;
+import com.cinema.models.Reservation;
 import com.cinema.models.User;
 import com.cinema.utils.Scenes;
 
@@ -102,9 +102,9 @@ public class DetailsFilm extends Pane{
 		User user = User.getInstance();
 		Scenes sc = Scenes.getInstance();
 		if(user.isConnected()) {
-			Payement payement = Payement.getInstance();
-			payement.setProjection(this.projection.getProjection().getId());
-			payement.setPrix(this.projection.getProjection().getTarif());
+			Reservation reservation = Reservation.getInstance();
+			reservation.setProjection(this.projection.getProjection().getId());
+			reservation.setPrix(this.projection.getProjection().getTarif());
 			sc.switchToPayment();
 		}
 		else

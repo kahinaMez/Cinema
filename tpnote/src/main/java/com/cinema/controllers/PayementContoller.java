@@ -1,9 +1,12 @@
 package com.cinema.controllers;
 
 import java.net.URL;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
-import com.cinema.models.Payement;
+import com.cinema.models.Reservation;
+import com.cinema.utils.FxDialogs;
 import com.cinema.utils.Scenes;
 
 import javafx.fxml.FXML;
@@ -22,11 +25,11 @@ public class PayementContoller implements Initializable{
 	@FXML private TextField cvc;
 	@FXML private Label prix;
 	
-	private Payement payement ;
+	private Reservation reservation ;
 	private Scenes sc;
 	
 	public PayementContoller() {
-		this.payement = Payement.getInstance();
+		this.reservation = Reservation.getInstance();
 		this.sc = Scenes.getInstance();
 	}
 	
@@ -38,19 +41,76 @@ public class PayementContoller implements Initializable{
 	
 	@FXML
 	public void valider() {
-		boolean confirm = payement.reserver();
+		String err = "";
 		
-		if(confirm) {
-			sc.switchToProjectionsScene();
+		err+=checkCardName();
+		err+=checkCardNumber();
+		err+=checkCvc();
+		err+=checkDateExpiration();
+		
+		if(err.length()==0) {
+			boolean confirm = reservation.reserver();
+			if(confirm) {
+				FxDialogs.showInformation("Votre réservation a bien été effectuée : ","Merci d'avoir réservé sur CinemaCOSMOS");
+				sc.switchToProjectionsScene();
+			}
+			else {
+				FxDialogs.showError("Erreur lors de la réservation", "veuillez réessayer plus tard");
+			}
 		}
 		else {
-			System.out.println("Erreur lors du paiement ");
+			FxDialogs.showError("Veuillez vérifier les champs suivants : ",err);
 		}
+	}
+	
+	public String checkCardName() {
+		if(this.nom.getText().length()<2)
+			return " - Le nom sur la carte ne doit pas être vide\n";
+		else
+			return "";
+	}
+	
+	public String checkCardNumber() {
+		try {
+			Long.parseLong(this.numCarte.getText());
+		}
+		catch(NumberFormatException e) {
+			return " - Le numéro de la carte doit etre constitué uniquement de nombres\n";
+		}
+		
+		if(this.numCarte.getText().length()==16)
+			return "";
+		else
+			return " - Le numéro de carte doit être constitué de 16 chiffres exactement\n";
+	}
+	
+	public String checkCvc() {
+		try {
+			Long.parseLong(this.cvc.getText());
+		}
+		catch(NumberFormatException e) {
+			return " - Le cvc doit etre constitué uniquement de nombres\n";
+		}
+		
+		if(this.cvc.getText().length()==3)
+			return "";
+		else
+			return " - Le numéro cvc doit être constitué de 3 chiffres exactement\n";
+	}
+	
+	public String checkDateExpiration() {
+		Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
+
+		if(this.dateExpiration.getValue()==null)
+			return " - La date d'expiration de la carte doit etre fournie\n";
+		else if(Date.valueOf(this.dateExpiration.getValue()).before(currentDate))
+			return " - La date d'expiration de la carte doit etre valide";
+		else
+			return "";
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		this.prix.setText(this.payement.getPrix()+" "+DEVISE);
+		this.prix.setText(this.reservation.getPrix()+" "+DEVISE);
 	}
 	
 }

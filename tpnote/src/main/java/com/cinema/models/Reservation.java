@@ -3,25 +3,27 @@ package com.cinema.models;
 import java.sql.Date;
 import java.util.Calendar;
 
+import com.cinema.dao.ProjectionDAO;
 import com.cinema.dao.ReservationDAO;
+import com.cinema.dto.ProjectionDto;
 import com.cinema.dto.ReservationDto;
 
-public class Payement {
+public class Reservation {
 	
-	private static Payement payement=null;
+	private static Reservation payement=null;
 	
 	private ReservationDAO dao ;
 	private ReservationDto reservation;
 	private double prix;
 	
-	private Payement() {
+	private Reservation() {
 		dao=new ReservationDAO();
 		reservation = new ReservationDto();
 	}
 	
-	public static Payement getInstance() {
+	public static Reservation getInstance() {
 		if(payement==null) {
-			payement = new Payement();
+			payement = new Reservation();
 		}
 		return payement;
 	}
@@ -57,7 +59,17 @@ public class Payement {
 		reservation.setValidation(true);
 		reservation.setId_user(userId);
 		
-		return dao.save(reservation);
+		if(dao.save(reservation)) {
+			ProjectionDAO pjDao = new ProjectionDAO();
+			
+			int idProjection = reservation.getId_projection();
+			ProjectionDto toUpdate = pjDao.findById(idProjection);
+			toUpdate.setNb_place_libre(toUpdate.getNb_place_libre()-1);
+			
+			return pjDao.update(idProjection, toUpdate);
+		}
+		
+		return false;
 		
 	}
 	
