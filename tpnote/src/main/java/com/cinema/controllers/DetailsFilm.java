@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.cinema.models.ProjectionDetail;
 import com.cinema.models.Reservation;
 import com.cinema.models.User;
+import com.cinema.utils.FxDialogs;
 import com.cinema.utils.Scenes;
 
 import javafx.fxml.FXML;
@@ -105,7 +106,11 @@ public class DetailsFilm extends Pane{
 			Reservation reservation = Reservation.getInstance();
 			reservation.setProjection(this.projection.getProjection().getId());
 			reservation.setPrix(this.projection.getProjection().getTarif());
-			sc.switchToPayment();
+			
+			if(this.projection.getProjection().getNb_place_libre()==0)
+				FxDialogs.showError("Oups désolé il ne reste plus de place sur cette projection", "");
+			else
+				sc.switchToPayment();
 		}
 		else
 			sc.switchToLoginScene();

@@ -1,7 +1,5 @@
 package com.cinema.dto;
 
-import java.sql.Date;
-
 public class UserDto {
 	private int id=-1;
 	private String nom=null;
